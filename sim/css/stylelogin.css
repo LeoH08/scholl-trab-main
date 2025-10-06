@@ -1,0 +1,99 @@
+/* Estilo do cabeçalho */
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #213967;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .logo a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: white;
+  }
+  
+  .logo img {
+    height: 50px;
+  }
+  
+  .logo h3 {
+    font-size: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin: 0;
+  }
+  
+  .list-menu {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .list-menu li a {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+  
+  .list-menu li a:hover {
+    color: #8db2f6;
+  }
+  
+  /* Estilo do rodapé */
+  .footer-content {
+    background-color: #213967;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    gap: 1rem;
+    color: white;
+  }
+  
+  .footer-social .footer-bibi {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  .footer-bibi li a {
+    color: white;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-bibi li a:hover {
+    color: #8db2f6;
+  }
+  
+  .footer-info {
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+  
+  .footer-info a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-info a:hover {
+    color: #8db2f6;
+  }
+  

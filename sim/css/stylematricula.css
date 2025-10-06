@@ -1,0 +1,215 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+  background-color: #f4f4f4;
+  color: #333;
+  font-family: "Montserrat", sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  width: 100vw;
+  height: 70px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #213967;
+  position: fixed;
+  top: 0;
+  padding-left: 30rem;
+  z-index: 1;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Space between the logo image and text */
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo h3 {
+  color: white;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.logo img {
+  height: 50px;
+}
+
+.content .list-menu {
+  width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content .list-menu li a {
+  padding: 3rem 1rem 2rem 1rem;
+  color: white;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  font-weight: 500px;
+  /* Removed transition property */
+}
+
+.content .list-menu li a:hover {
+  background-color: #1c3f80;
+  border-bottom: 4px solid #8db2f6;
+  color: #8db2f6;
+  /* Removed transform property */
+}
+
+main {
+  padding: 100px 20px;
+  max-width: 600px;
+  margin: 120px auto;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+form h1 {
+  color: #213967;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+label {
+  font-size: 1.2rem;
+  color: #213967;
+  margin-bottom: 0.2rem;
+  font-weight: 500;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="tel"],
+input[type="file"],
+select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  background: #f7faff;
+  color: #213967;
+  margin-bottom: 0.2rem;
+  /* Removed transition property */
+  box-shadow: 0 1px 2px rgba(33, 57, 103, 0.04);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+input[type="tel"]:focus,
+select:focus {
+  border-color: #213967;
+  outline: none;
+  /* Removed box-shadow animation */
+}
+
+input[type="file"] {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+input[type="checkbox"] {
+  accent-color: #213967;
+  margin-right: 0.7rem;
+  transform: scale(1.1);
+}
+
+button[type="submit"] {
+  background-color: #213967;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  padding: 1rem 0;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  /* Removed transition and transform properties */
+  box-shadow: 0 2px 8px rgba(33, 57, 103, 0.1);
+  letter-spacing: 1px;
+}
+
+button[type="submit"]:hover {
+  background-color: #1c3f80;
+  color: #213967;
+  /* Removed transform property */
+  box-shadow: 0 4px 12px rgba(33, 57, 103, 0.2); /* Sombra mais intensa */
+}
+
+::-webkit-input-placeholder {
+  color: #b0b8c9;
+}
+::-moz-placeholder {
+  color: #b0b8c9;
+}
+:-ms-input-placeholder {
+  color: #b0b8c9;
+}
+::placeholder {
+  color: #b0b8c9;
+}
+
+form label[for="documentos"] {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  color: #1c3f80;
+}
+
+form label input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+footer {
+  background-color: #213967;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 1.5rem;
+  position: relative;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 80px 2vw 20px 2vw;
+    max-width: 98vw;
+    margin: 100px auto 20px auto;
+    border-radius: 8px;
+  }
+  form h1 {
+    font-size: 1.3rem;
+  }
+  label,
+  input,
+  select,
+  button {
+    font-size: 1rem;
+  }
+}

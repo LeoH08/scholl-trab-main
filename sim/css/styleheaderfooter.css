@@ -1,0 +1,103 @@
+/* Cabeçalho (Header) */
+header.content {
+    background-color: #213967;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+  }
+  
+  header .logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+  }
+  
+  header .logo img {
+    height: 48px;
+  }
+  
+  header .logo h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  header nav ul.list-menu {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header nav ul.list-menu li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    transition: color 0.3s ease;
+  }
+  
+  header nav ul.list-menu li a:hover {
+    color: #8db2f6;
+  }
+  
+  /* Rodapé (Footer) */
+  footer.footer-content {
+    background-color: #213967;
+    color: white;
+    padding: 3rem 1rem 2rem;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: auto;
+  }
+  
+  .footer-social {
+    margin-bottom: 1rem;
+  }
+  
+  .footer-bibi {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0;
+    list-style: none;
+    margin-bottom: 1.5rem;
+  }
+  
+  .footer-bibi li a {
+    color: white;
+    font-size: 1.8rem;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-bibi li a:hover {
+    color: #8db2f6;
+  }
+  
+  .footer-info p {
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
+  }
+  
+  .footer-info a {
+    color: #8db2f6;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .footer-info a:hover {
+    text-decoration: underline;
+  }
+      

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/stylelayout.css" />
+    <link
+      rel="shortcut icon"
+      href="../fts/Logo_EETAN.png"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <title>EETAN | Site Oficial</title>
+    <style>
+      header.content {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: #213967;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      footer.footer-content {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #213967;
+        color: aliceblue;
+        text-align: center;
+        padding: 1rem 0;
+      }
+
+      footer.footer-content a {
+        color: aliceblue;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      footer.footer-content a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="content">
+      <div class="logo">
+        <a href="../html/index.php">
+          <img src="../fts/Logo_EETAN.png" alt="logo_escola" />
+          <h3>EETAN</h3>
+        </a>
+      </div>
+      <nav>
+        <ul class="list-menu">
+          <li><a href="../html/sobre.php">Sobre</a></li>
+          <li><a href="../html/cursos.php">Cursos</a></li>
+          <li><a href="../html/direcao.php">Direção</a></li>
+          <li><a href="../html/CorpoDocente.php">Professores</a></li>
+          <li><a href="../html/matricula.php">Matricula</a></li>
+          <li>
+            <a
+              href="https://www.facebook.com/eetan.almeidaneves?locale=pt_BR"
+              target="_blank"
+              ><i class="bi bi-facebook"></i
+            ></a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/eetan.cf/" target="_blank"
+              ><i class="bi bi-instagram"></i
+            ></a>
+          </li>
+          <li>
+            <a
+              href="https://www.google.com/maps/place/Escola+Estadual+Tancredo+de+Almeida+Neves/@-19.5003278,-42.637431,17z/data=!3m1!4b1!4m6!3m5!1s0xa5567c07a60a61:0x83e30fe60a08e640!8m2!3d-19.5003329!4d-42.6348561!16s%2Fg%2F11ggbds1s0?entry=ttu"
+              target="_blank"
+              ><i class="bi bi-geo-alt-fill"></i
+            ></a>
+          </li>
+          <li>
+            <a href="../html/cadastro.php">
+              <i class="bi bi-person-circle"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <footer class="footer-content">
+      <p>&copy; 2024 ETAN - Escola Estadual Tancredo de Almeida Neves</p>
+      <p>
+        <a href="https://www.instagram.com/eetan.cf/">Contato</a> |
+        <a href="../html/politica.php">Política de Privacidade</a>
+      </p>
+    </footer>
+  </body>
+</html>
+
+css
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro - EETAN</title>
+    <link rel="stylesheet" href="../css/stylecadastro.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <link rel="stylesheet" href="../css/cabeçalhoerodape.css" /> -->
+    <script>
+      function toggleFields() {
+        const userType = document.getElementById("tipo_usuario").value;
+        const alunoFields = document.getElementById("alunoFields");
+        const professorFields = document.getElementById("professorFields");
+
+        alunoFields.style.display = userType === "aluno" ? "block" : "none";
+        professorFields.style.display =
+          userType === "professor" ? "block" : "none";
+
+        // Set required attributes dynamically
+        Array.from(alunoFields.querySelectorAll("input")).forEach(
+          (input) => (input.required = userType === "aluno")
+        );
+        Array.from(professorFields.querySelectorAll("input")).forEach(
+          (input) => (input.required = userType === "professor")
+        );
+      }
+    </script>
+  </head>
+  <body>
+    <header class="content">
+      <div class="logo">
+        <a href="../html/index.php">
+          <img src="../fts/Logo_EETAN.png" alt="logo_escola" />
+          <h3>EETAN</h3>
+        </a>
+      </div>
+      <nav>
+        <ul class="list-menu">
+          <li><a href="../html/sobre.php">Sobre</a></li>
+          <li><a href="../html/cursos.php">Cursos</a></li>
+          <li><a href="../html/direcao.php">Direção</a></li>
+          <li><a href="../html/CorpoDocente.php">Professores</a></li>
+          <li><a href="../html/matricula.php">Matricula</a></li>
+          <li>
+            <a
+              href="https://www.facebook.com/eetan.almeidaneves?locale=pt_BR"
+              target="_blank"
+              ><i class="bi bi-facebook"></i
+            ></a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/eetan.cf/" target="_blank"
+              ><i class="bi bi-instagram"></i
+            ></a>
+          </li>
+          <li>
+            <a
+              href="https://www.google.com/maps/place/Escola+Estadual+Tancredo+de+Almeida+Neves/@-19.5003278,-42.637431,17z/data=!3m1!4b1!4m6!3m5!1s0xa5567c07a60a61:0x83e30fe60a08e640!8m2!3d-19.5003329!4d-42.6348561!16s%2Fg%2F11ggbds1s0?entry=ttu"
+              target="_blank"
+              ><i class="bi bi-geo-alt-fill"></i
+            ></a>
+          </li>
+          <li>
+            <a href="../html/cadastro.php">
+              <i class="bi bi-person-circle"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <form action="../php/cadastro.php" method="post">
+        <h1>Cadastro</h1>
+
+        <label for="tipo_usuario">Você é:</label>
+        <select
+          id="tipo_usuario"
+          name="tipo_usuario"
+          onchange="toggleFields()"
+          required
+        >
+          <option value="" disabled selected>Selecione</option>
+          <option value="aluno">Aluno</option>
+          <option value="professor">Professor</option>
+        </select>
+
+        <!-- Campos para Aluno -->
+        <div id="alunoFields" style="display: none">
+          <label for="aluno_usuario">Nome de Usuário:</label>
+          <input
+            type="text"
+            id="aluno_usuario"
+            name="aluno_usuario"
+            placeholder="Digite seu nome de usuário"
+          />
+
+          <br /><label for="aluno_senha">Senha:</label>
+          <input
+            type="password"
+            id="aluno_senha"
+            name="aluno_senha"
+            placeholder="Digite sua senha"
+          />
+
+          <br /><label for="aluno_codigo">Código de Matrícula:</label>
+          <input
+            type="text"
+            id="aluno_codigo"
+            name="aluno_codigo"
+            placeholder="Digite o código único da matrícula"
+          />
+        </div>
+
+        <!-- Campos para Professor -->
+        <div id="professorFields" style="display: none">
+          <label for="professor_usuario">Nome de Usuário:</label>
+          <input
+            type="text"
+            id="professor_usuario"
+            name="professor_usuario"
+            placeholder="Digite seu nome de usuário"
+          />
+
+          <br />
+          <label for="professor_senha">Senha:</label>
+          <input
+            type="password"
+            id="professor_senha"
+            name="professor_senha"
+            placeholder="Digite sua senha"
+          />
+
+          <br /><label for="professor_codigo">Código da Escola:</label>
+          <input
+            type="text"
+            id="professor_codigo"
+            name="professor_codigo"
+            placeholder="Digite o código fornecido pela escola"
+          />
+        </div>
+
+        <button type="submit">Cadastrar</button>
+      </form>
+    </main>
+    <footer class="footer-content">
+      <p>&copy; 2024 ETAN - Escola Estadual Tancredo de Almeida Neves</p>
+      <p>
+        <a style="color: aliceblue" href="https://www.instagram.com/eetan.cf/"
+          >Contato</a
+        >
+        |
+        <a style="color: aliceblue" href="../html/politica.php"
+          >Política de Privacidade</a
+        >
+      </p>
+    </footer>
+  </body>
+</html>
+
+<main id="politica-privacidade">
+  <h1>Política de Privacidade</h1>
+  <p>
+    <strong>Escola Estadual Técnica Tancredo de Almeida Neves</strong><br />
+    Rua Magnólia, Bairro São Domingos – Coronel Fabriciano – MG – Brasil
+  </p>
+
+  <h2>1. Compromisso com a privacidade</h2>
+  <p>
+    A Escola Estadual Técnica Tancredo de Almeida Neves se compromete a proteger
+    a privacidade e os dados pessoais de seus alunos, responsáveis, funcionários
+    e visitantes do nosso site. Esta Política de Privacidade explica como
+    coletamos, usamos, armazenamos e protegemos as informações fornecidas por
+    você durante a navegação.
+  </p>
+
+  <h2>2. Coleta de informações</h2>
+  <p>
+    Nosso site pode coletar informações pessoais em formulários de contato,
+    inscrições em eventos escolares ou outras interações voluntárias, tais como:
+  </p>
+  <ul>
+    <li>Nome completo;</li>
+    <li>E-mail;</li>
+    <li>Telefone;</li>
+    <li>Nome do aluno e série/curso;</li>
+    <li>Mensagens enviadas via formulário.</li>
+  </ul>
+
+  <h2>3. Uso das informações</h2>
+  <p>As informações coletadas são utilizadas exclusivamente para:</p>
+  <ul>
+    <li>Entrar em contato com alunos e responsáveis;</li>
+    <li>Enviar comunicados escolares e informações relevantes;</li>
+    <li>Processar inscrições em eventos, cursos ou atividades;</li>
+    <li>Melhorar a comunicação com a comunidade escolar;</li>
+    <li>Atender obrigações legais e administrativas.</li>
+  </ul>
+
+  <h2>4. Compartilhamento de dados</h2>
+  <p>Não compartilhamos seus dados pessoais com terceiros, exceto quando:</p>
+  <ul>
+    <li>Houver obrigação legal;</li>
+    <li>
+      For necessário para fins educacionais ou administrativos, respeitando a
+      Lei Geral de Proteção de Dados (LGPD – Lei nº 13.709/2018).
+    </li>
+  </ul>
+
+  <h2>5. Armazenamento e segurança</h2>
+  <p>
+    As informações são armazenadas em sistemas seguros, com medidas de proteção
+    contra acesso não autorizado, perda, alteração ou divulgação indevida.
+  </p>
+
+  <h2>6. Uso de cookies</h2>
+  <p>
+    Nosso site pode utilizar cookies para melhorar sua experiência de navegação.
+    O usuário pode configurar seu navegador para recusar cookies, mas isso pode
+    afetar algumas funcionalidades.
+  </p>
+
+  <h2>7. Direitos do titular dos dados</h2>
+  <p>Você tem o direito de:</p>
+  <ul>
+    <li>Acessar, corrigir ou excluir seus dados pessoais;</li>
+    <li>Revogar o consentimento para uso de dados, quando aplicável;</li>
+    <li>Solicitar informações sobre o tratamento de seus dados.</li>
+  </ul>
+  <p>
+    Para exercer esses direitos, entre em contato conosco pelo canal oficial da
+    escola.
+  </p>
+
+  <h2>8. Alterações na política</h2>
+  <p>
+    Esta Política de Privacidade pode ser atualizada periodicamente. A versão
+    mais recente estará sempre disponível em nosso site. Recomendamos que você
+    revise regularmente.
+  </p>
+
+  <h2>9. Contato</h2>
+  <p>
+    Para dúvidas, sugestões ou solicitações relacionadas à privacidade de dados,
+    entre em contato com a escola:
+  </p>
+  <ul>
+    <li>
+      📍 Endereço: Rua Magnólia, Bairro São Domingos, Coronel Fabriciano – MG,
+      Brasil
+    </li>
+    <li>📧 E-mail institucional: [inserir e-mail oficial da escola]</li>
+    <li>📞 Telefone: [inserir número de telefone da escola]</li>
+  </ul>
+
+  <p>
+    Esta política está em conformidade com a Lei Geral de Proteção de Dados
+    Pessoais (LGPD) e reflete nosso compromisso com a ética, a transparência e o
+    respeito à comunidade escolar.
+  </p>
+</main>

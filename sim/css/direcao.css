@@ -1,0 +1,680 @@
+.direcao-intro {
+  max-width: 960px;
+  margin: 2rem auto 1rem;
+  padding: 0 1rem;
+  text-align: center;
+}
+.direcao-intro h1 {
+  font-size: clamp(2.3rem, 4vw + 1rem, 3.2rem);
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+}
+.direcao-intro .intro-resumo {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 820px;
+  margin: 0 auto;
+}
+.direcao-intro .intro-resumo {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+.acoes-direcao {
+  margin: 1rem 0 0;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn-acao {
+  background: #2f65b8;
+  color: #fff;
+  padding: 1rem 1.75rem;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  border-radius: 40px;
+  text-decoration: none;
+  transition: 0.25s;
+  font-weight: 600;
+}
+.btn-acao:hover,
+.btn-acao:focus {
+  background: #224c8a;
+}
+.btn-acao.secundario {
+  background: #4d4d4d;
+}
+.btn-acao.secundario:hover {
+  background: #2f2f2f;
+}
+
+.cards-direcao {
+  display: grid;
+  gap: 2.5rem;
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+@media (min-width: 880px) {
+  .cards-direcao {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.card-gestora {
+  background: #ffffff;
+  border: 1px solid #e3e7ef;
+  border-radius: 18px;
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.07);
+  position: relative;
+}
+.card-gestora:focus-within {
+  outline: 2px solid #2f65b8;
+}
+.perfil-img img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #2f65b8;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+.perfil-img {
+  display: flex;
+  justify-content: center;
+}
+.perfil-conteudo h2 {
+  font-size: 1.6rem;
+  margin: 0 0 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+.cargo {
+  background: #2f65b8;
+  color: #fff;
+  font-size: 0.75rem;
+  letter-spacing: 0.8px;
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+.topicos {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.topicos li strong {
+  color: #1f3d63;
+}
+.citacao {
+  font-style: italic;
+  background: linear-gradient(90deg, #eef4fb, #ffffff);
+  padding: 1rem 1.2rem;
+  border-left: 4px solid #2f65b8;
+  border-radius: 8px;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.mensagem-direcao,
+.projetos-conquistas {
+  max-width: 980px;
+  margin: 3rem auto 2.5rem;
+  padding: 0 1rem;
+}
+
+.mensagem-direcao p {
+  line-height: 1.65;
+  font-size: 1.15rem;
+  max-width: 820px;
+}
+
+.projetos-conquistas h2,
+.mensagem-direcao h2 {
+  margin-bottom: 0.75rem;
+  font-size: 2rem;
+}
+
+.slider {
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #dfe6f2;
+  border-radius: 16px;
+  padding: 1.75rem 1.5rem 3.25rem;
+  box-shadow: 0 4px 14px -4px rgba(0, 0, 0, 0.08);
+}
+.slider-track {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+.slide {
+  min-width: 100%;
+  padding: 0.5rem 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.slide h3 {
+  font-size: 1.15rem;
+  margin: 0;
+  color: #2f65b8;
+}
+.slide p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0 0 0.5rem;
+}
+.slider .nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #2f65b8;
+  color: #fff;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: 0.25s;
+}
+.slider .nav:hover {
+  background: #234e8f;
+}
+.slider .prev {
+  left: 10px;
+}
+.slider .next {
+  right: 10px;
+}
+.dots {
+  position: absolute;
+  bottom: 0.65rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+}
+.dots button {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #2f65b8;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: 0.3s;
+}
+.dots button[aria-current="true"] {
+  background: #2f65b8;
+  box-shadow: 0 0 0 3px rgba(47, 101, 184, 0.15);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slider-track {
+    transition: none;
+  }
+  .animate[data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .card-gestora {
+    padding: 1.75rem 1.25rem;
+  }
+  .perfil-img img {
+    width: 150px;
+    height: 150px;
+  }
+  .direcao-intro h1 {
+    font-size: 2.35rem;
+  }
+  .direcao-intro .intro-resumo {
+    font-size: 1.1rem;
+  }
+  .btn-acao {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ================= MAIOR ESCALA TIPOGRÁFICA ================= */
+:root {
+  --escala-base: 1.15; /* ajuste rápido geral */
+  --fz-sm: calc(0.95rem * var(--escala-base));
+  --fz-md: calc(1.05rem * var(--escala-base));
+  --fz-lg: calc(1.25rem * var(--escala-base));
+  --fz-xl: clamp(3rem, 5.5vw + 1rem, 4.2rem);
+  --fz-xxl: clamp(3.3rem, 6vw + 1rem, 4.6rem);
+}
+
+body {
+  font-size: var(--fz-md);
+  line-height: 1.7;
+}
+
+.direcao-intro h1 {
+  font-size: var(--fz-xxl);
+  letter-spacing: 0.5px;
+  margin-bottom: 1.1rem;
+}
+
+.direcao-intro .intro-resumo {
+  font-size: 1.45rem;
+  line-height: 1.75;
+}
+
+.btn-acao {
+  font-size: 1.15rem;
+  padding: 1.15rem 2.2rem;
+  border-radius: 48px;
+  box-shadow: 0 6px 18px -6px rgba(0, 0, 0, 0.25);
+}
+.btn-acao:active {
+  transform: translateY(2px);
+}
+
+.cards-direcao {
+  gap: 3rem;
+}
+
+.card-gestora {
+  padding: 2.5rem 2.25rem;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.18);
+}
+
+.perfil-img img {
+  width: 220px;
+  height: 220px;
+  border-width: 5px;
+}
+
+.perfil-conteudo h2 {
+  font-size: 2.15rem;
+  gap: 0.75rem;
+}
+
+.cargo {
+  font-size: 0.85rem;
+  padding: 0.45rem 0.75rem;
+  letter-spacing: 1px;
+}
+
+.topicos {
+  font-size: 1.15rem;
+  line-height: 1.65;
+  gap: 1rem;
+}
+
+.citacao {
+  font-size: 1.2rem;
+  line-height: 1.55;
+  padding: 1.25rem 1.5rem;
+  border-left-width: 6px;
+}
+
+.mensagem-direcao h2,
+.projetos-conquistas h2 {
+  font-size: 2.6rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.25rem;
+}
+
+.mensagem-direcao p {
+  font-size: 1.35rem;
+  line-height: 1.8;
+}
+
+.slider {
+  padding: 2.25rem 2rem 4rem;
+}
+
+.slide h3 {
+  font-size: 1.55rem;
+  margin-bottom: 0.25rem;
+}
+
+.slide p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.slider .nav {
+  width: 64px;
+  height: 64px;
+  font-size: 1.75rem;
+}
+
+.dots button {
+  width: 18px;
+  height: 18px;
+  border-width: 3px;
+}
+
+@media (max-width: 860px) {
+  .perfil-img img {
+    width: 190px;
+    height: 190px;
+  }
+  .perfil-conteudo h2 {
+    font-size: 1.9rem;
+  }
+  .direcao-intro h1 {
+    font-size: clamp(2.6rem, 7vw, 3.4rem);
+  }
+  .direcao-intro .intro-resumo {
+    font-size: 1.25rem;
+  }
+  .card-gestora {
+    padding: 2.1rem 1.6rem;
+  }
+  .btn-acao {
+    width: 100%;
+  }
+  .mensagem-direcao p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .perfil-img img {
+    width: 170px;
+    height: 170px;
+  }
+  .direcao-intro h1 {
+    font-size: 2.5rem;
+  }
+  .slide h3 {
+    font-size: 1.35rem;
+  }
+  .slide p {
+    font-size: 1.05rem;
+  }
+  .slider .nav {
+    width: 56px;
+    height: 56px;
+  }
+  .card-gestora {
+    gap: 1.4rem;
+  }
+}
+
+/* ===== Ajustes anti-sobreposição e ancoragem ===== */
+.mensagem-direcao,
+.projetos-conquistas,
+.cards-direcao,
+.direcao-intro {
+  scroll-margin-top: 130px; /* evita que o header cubra o título ao clicar no link */
+}
+
+/* Aumenta o afastamento entre 'Mensagem' e 'Projetos' */
+.mensagem-direcao + .projetos-conquistas {
+  margin-top: 5.5rem;
+}
+
+/* Maior margem superior só para a seção de projetos */
+#projetos.projetos-conquistas {
+  margin-top: 6rem;
+}
+
+/* Reposiciona botões do carrossel para não invadirem a área anterior */
+.slider .nav {
+  top: 60%;
+}
+
+/* Aumenta o espaço interno superior para afastar conteúdo do topo */
+.slider {
+  padding-top: 3.25rem;
+}
+
+/* Botões um pouco menores em telas muito pequenas e ainda mais baixos */
+@media (max-width: 700px) {
+  .slider .nav {
+    top: 63%;
+  }
+}
+@media (max-width: 520px) {
+  .slider .nav {
+    top: 65%;
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+  }
+  #projetos.projetos-conquistas {
+    margin-top: 5rem;
+  }
+}
+
+/* ===== Remoção definitiva dos botões do slider ===== */
+.slider .nav {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Ajuste de espaço (antes aumentado por causa dos botões) */
+.slider {
+  padding-top: 2rem !important;
+}
+
+/* Caso margens grandes não sejam mais necessárias, reduzir opcionalmente */
+#projetos.projetos-conquistas {
+  margin-top: 3.5rem;
+}
+
+/* ===== OVERRIDES DE ESCALA (MAIOR) ===== */
+:root {
+  --escala-base: 1.3;
+  --fz-xl: clamp(3.4rem, 6.5vw + 1rem, 4.8rem);
+  --fz-xxl: clamp(3.8rem, 7.5vw + 1rem, 5.4rem);
+}
+
+.direcao-intro h1 {
+  font-size: var(--fz-xxl);
+  letter-spacing: 1px;
+  margin-bottom: 1.4rem;
+}
+
+.direcao-intro .intro-resumo {
+  font-size: 1.75rem;
+  line-height: 1.9;
+  max-width: 900px;
+}
+
+.btn-acao {
+  font-size: 1.35rem;
+  padding: 1.35rem 2.8rem;
+  border-radius: 56px;
+}
+
+.cards-direcao {
+  gap: 3.5rem;
+  margin-top: 3.5rem;
+}
+
+.card-gestora {
+  padding: 3rem 2.75rem;
+  gap: 1.75rem;
+}
+
+.perfil-img img {
+  width: 250px;
+  height: 250px;
+}
+
+.perfil-conteudo h2 {
+  font-size: 2.6rem;
+}
+
+.cargo {
+  font-size: 1rem;
+  padding: 0.55rem 0.95rem;
+  border-radius: 10px;
+  letter-spacing: 1.3px;
+}
+
+.topicos {
+  font-size: 1.25rem;
+  line-height: 1.75;
+  gap: 1.25rem;
+}
+
+.citacao {
+  font-size: 1.35rem;
+  line-height: 1.7;
+  padding: 1.6rem 1.9rem;
+  border-left-width: 8px;
+}
+
+.mensagem-direcao h2,
+.projetos-conquistas h2 {
+  font-size: 3rem;
+  margin-bottom: 1.75rem;
+  letter-spacing: 1px;
+}
+
+.mensagem-direcao p {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  max-width: 880px;
+}
+
+.slider {
+  padding: 2.75rem 2.4rem 4.25rem;
+}
+
+.slide h3 {
+  font-size: 1.85rem;
+  margin-bottom: 0.4rem;
+}
+
+.slide p {
+  font-size: 1.35rem;
+  line-height: 1.75;
+}
+
+.dots button {
+  width: 22px;
+  height: 22px;
+  border-width: 4px;
+}
+
+@media (max-width: 1020px) {
+  .direcao-intro .intro-resumo {
+    font-size: 1.5rem;
+  }
+  .card-gestora {
+    padding: 2.4rem 2rem;
+  }
+  .perfil-img img {
+    width: 220px;
+    height: 220px;
+  }
+  .perfil-conteudo h2 {
+    font-size: 2.3rem;
+  }
+  .topicos {
+    font-size: 1.15rem;
+  }
+  .citacao {
+    font-size: 1.25rem;
+  }
+  .slide h3 {
+    font-size: 1.6rem;
+  }
+  .slide p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .direcao-intro h1 {
+    font-size: clamp(2.9rem, 8vw, 3.6rem);
+  }
+  .direcao-intro .intro-resumo {
+    font-size: 1.3rem;
+  }
+  .perfil-img img {
+    width: 200px;
+    height: 200px;
+  }
+  .card-gestora {
+    padding: 2.1rem 1.6rem;
+  }
+  .topicos {
+    gap: 0.9rem;
+  }
+  .mensagem-direcao p {
+    font-size: 1.3rem;
+  }
+  .slide h3 {
+    font-size: 1.45rem;
+  }
+  .slide p {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .direcao-intro h1 {
+    font-size: 2.7rem;
+  }
+  .direcao-intro .intro-resumo {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+  .perfil-img img {
+    width: 170px;
+    height: 170px;
+  }
+  .btn-acao {
+    font-size: 1.05rem;
+    padding: 1rem 1.6rem;
+  }
+  .card-gestora {
+    padding: 1.85rem 1.3rem;
+  }
+  .perfil-conteudo h2 {
+    font-size: 2rem;
+  }
+  .topicos {
+    font-size: 1.05rem;
+    line-height: 1.55;
+  }
+  .citacao {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    padding: 1rem 1.2rem;
+  }
+  .mensagem-direcao p {
+    font-size: 1.15rem;
+  }
+  .slide h3 {
+    font-size: 1.25rem;
+  }
+  .slide p {
+    font-size: 1.05rem;
+  }
+  .dots button {
+    width: 16px;
+    height: 16px;
+    border-width: 3px;
+  }
+}

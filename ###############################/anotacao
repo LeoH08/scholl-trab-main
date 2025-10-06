@@ -1,0 +1,18 @@
+
+## Professores
+
+| Usuário       | Senha     | MASP   |
+|---------------|-----------|--------|
+| maria_prof    | senha123  | 123456 |
+| carlos_prof   | senha456  | 654321 |
+
+---
+
+## Alunos
+
+| Usuário     | Matricula         | Senha     |
+|-------------|-------------------|-----------|
+| joao_aluno  | 20240001          | senha123  |
+| ana_aluna   | 20240002          | senha456  |
+
+

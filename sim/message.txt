@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matrícula - EETAN</title>
+    <link rel="stylesheet" href="../style/stylelayout.css" />
+  </head>
+  <body>
+    <main>
+      <form action="matricula.php" method="post" enctype="multipart/form-data">
+        <h1>Formulário de Matrícula</h1>
+
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome" name="nome" required />
+
+        <label for="data_nascimento">Data de Nascimento:</label>
+        <input
+          type="date"
+          id="data_nascimento"
+          name="data_nascimento"
+          required
+        />
+
+        <label for="sexo">Sexo:</label>
+        <select id="sexo" name="sexo" required>
+          <option value="" disabled selected>Selecione</option>
+          <option value="feminino">Feminino</option>
+          <option value="masculino">Masculino</option>
+          <option value="outro">Outro</option>
+        </select>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="contato">Número de Contato:</label>
+        <input
+          type="tel"
+          id="contato"
+          name="contato"
+          required
+          placeholder="(XX) XXXXX-XXXX"
+        />
+
+        <label for="endereco">Endereço Completo:</label>
+        <input
+          type="text"
+          id="endereco"
+          name="endereco"
+          required
+          placeholder="Rua, número, bairro, cidade, UF, CEP"
+        />
+
+        <label for="responsavel">Nome do Responsável:</label>
+        <input type="text" id="responsavel" name="responsavel" required />
+
+        <label for="cpf">CPF:</label>
+        <input
+          type="text"
+          id="cpf"
+          name="cpf"
+          required
+          placeholder="XXX.XXX.XXX-XX"
+          maxlength="14"
+        />
+
+        <label for="rg">RG:</label>
+        <input type="text" id="rg" name="rg" required />
+
+        <label for="escola_origem">Escola de Origem:</label>
+        <input type="text" id="escola_origem" name="escola_origem" required />
+
+        <label for="ano">Ano/Série:</label>
+        <select id="ano" name="ano" required>
+          <option value="" disabled selected>Selecione</option>
+          <option value="1">1º Ano</option>
+          <option value="2">2º Ano</option>
+          <option value="3">3º Ano</option>
+        </select>
+
+        <label for="turno">Turno:</label>
+        <select id="turno" name="turno" required>
+          <option value="" disabled selected>Selecione</option>
+          <option value="integral">Integral</option>
+          <option value="noturno">Noturno</option>
+        </select>
+
+        <label for="curso">Curso Desejado:</label>
+        <select id="curso" name="curso" required>
+          <option value="" disabled selected>Selecione um curso</option>
+          <option value="desenvolvimento">Desenvolvimento de Sistemas</option>
+          <option value="logistica">Logística</option>
+          <option value="eja">EJA</option>
+        </select>
+
+        <label for="necessidades">Possui necessidades especiais?</label>
+        <input
+          type="text"
+          id="necessidades"
+          name="necessidades"
+          placeholder="Descreva se houver"
+        />
+
+        <label for="documentos"
+          >Anexar Documentos (RG, CPF, comprovante de residência, histórico
+          escolar):</label
+        >
+        <input type="file" id="documentos" name="documentos[]" multiple />
+
+        <label>
+          <input type="checkbox" name="autorizacao_imagem" required />
+          Autorizo o uso de imagem do aluno para fins institucionais.
+        </label>
+
+        <button type="submit">Enviar</button>
+      </form>
+    </main>
+  </body>
+</html>
