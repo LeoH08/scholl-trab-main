@@ -167,6 +167,7 @@ if ($tipo_usuario === 'professor') {
 		}
 
 		body.boletim-page {
+			font-size: 1.35rem;
 			background: radial-gradient(circle at 25% 20%, #f2f7fd, #dae4f1);
 			font-family: var(--font);
 			min-height: 100vh;
@@ -178,6 +179,10 @@ if ($tipo_usuario === 'professor') {
 			box-shadow: none !important;
 			padding: 20px 10px !important;
 			max-width: 1220px !important;
+			margin: 0 auto;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
 		}
 
 		.boletim-shell {
@@ -185,6 +190,7 @@ if ($tipo_usuario === 'professor') {
 			gap: 28px;
 			align-items: flex-start;
 			flex-wrap: wrap;
+			justify-content: center;
 		}
 
 		@media (max-width:980px) {
@@ -311,11 +317,13 @@ if ($tipo_usuario === 'professor') {
 		/* Conteúdo boletim */
 		.boletim-conteudo {
 			flex: 1;
-			min-width: 420px;
+			min-width: 520px;
+			max-width: 800px;
+			margin: 0 auto;
 			background: var(--panel);
 			border: 1px solid var(--border);
 			border-radius: var(--radius);
-			padding: 26px 30px 40px;
+			padding: 32px 40px 48px;
 			box-shadow: var(--shadow);
 			position: relative;
 		}
@@ -385,10 +393,10 @@ if ($tipo_usuario === 'professor') {
 		}
 
 		.boletim-table td {
-			padding: 13px 14px;
-			font-size: .92rem;
-			font-weight: 500;
-			color: var(--text);
+			padding: 16px 18px;
+			font-size: 2rem;
+			font-weight: 600;
+			color: var(--primary);
 			border-bottom: 1px solid #edf2f8;
 		}
 
@@ -402,9 +410,9 @@ if ($tipo_usuario === 'professor') {
 			background: #fff;
 			border: 1.5px solid var(--border);
 			border-radius: 10px;
-			padding: 6px 10px;
-			font-size: .85rem;
-			font-weight: 600;
+			padding: 10px 14px;
+			font-size: 1.08rem;
+			font-weight: 700;
 			color: var(--primary);
 			transition: .2s;
 			outline: none;
@@ -420,9 +428,9 @@ if ($tipo_usuario === 'professor') {
 			display: inline-flex;
 			align-items: center;
 			gap: 6px;
-			padding: 6px 12px;
+			padding: 8px 16px;
 			border-radius: 40px;
-			font-size: .68rem;
+			font-size: 1rem;
 			font-weight: 700;
 			letter-spacing: .09rem;
 			text-transform: uppercase;
@@ -447,11 +455,11 @@ if ($tipo_usuario === 'professor') {
 
 		.valor-badge {
 			display: inline-block;
-			min-width: 58px;
-			padding: 6px 10px;
+			min-width: 130px;
+			padding: 16px 28px;
 			text-align: center;
 			border-radius: 10px;
-			font-size: .74rem;
+			font-size: 1.25rem;
 			font-weight: 700;
 			letter-spacing: .05rem;
 			background: #fff;
@@ -715,7 +723,7 @@ if ($tipo_usuario === 'professor') {
 												<td>
 													<input type="hidden" name="boletins[<?= $i ?>][boletim_id]" value="<?= esc($b['boletim_id']) ?>">
 													<input type="hidden" name="boletins[<?= $i ?>][disciplina_id]" value="<?= esc($b['disciplina_id']) ?>">
-													<input type="number" name="boletins[<?= $i ?>][nota]" value="<?= esc($b['nota']) ?>" min="0" max="25" step="0.01">
+													<input type="number" name="boletins[<?= $i ?>][nota]" value="<?= esc($b['nota'] ?? '0') ?>" min="0" max="25" step="0.01" style="background:#fff; color:#264d86; font-size:1.15rem; font-weight:700; width:100%; min-width:80px;">
 													<div class="bar-wrap">
 														<div class="bar-fill" data-bar-nota data-val="<?= (float)$b['nota'] ?>"></div>
 													</div>

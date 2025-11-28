@@ -31,6 +31,7 @@
       font-family: "Roboto", Arial, sans-serif;
       color: var(--c-text);
       line-height: 1.55;
+      font-size: 1.25rem; /* aumentado */
     }
 
     header.content {
@@ -43,24 +44,24 @@
     main#sobre {
       max-width: 1180px;
       margin: 0 auto 60px;
-      padding: 120px 34px 56px;
+      padding: 140px 44px 70px; /* aumentado */
     }
 
     .cards-grid {
       display: flex;
       flex-direction: column;
-      gap: 34px;
+      gap: 44px; /* aumentado */
     }
 
     .card {
       background: var(--c-surface);
       border: 1px solid #e1e8ef;
       border-radius: var(--radius);
-      padding: 26px 24px 28px;
+      padding: 36px 32px 38px; /* aumentado */
       box-shadow: var(--shadow);
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 22px; /* aumentado */
       transition: .25s;
     }
 
@@ -73,7 +74,7 @@
       margin: 0 0 6px;
       font-weight: 700;
       color: var(--c-primary);
-      font-size: 2rem;
+      font-size: 2.5rem; /* aumentado */
       display: flex;
       gap: 10px;
       align-items: center;
@@ -95,7 +96,7 @@
     }
 
     .card.hero h1 {
-      font-size: clamp(2rem, 4.4vw, 2.9rem);
+      font-size: clamp(2.5rem, 5vw, 3.5rem); /* aumentado */
       font-weight: 800;
       letter-spacing: .5px;
     }
@@ -104,8 +105,8 @@
       display: inline-block;
       background: #ffffff22;
       border: 1px solid #ffffff40;
-      padding: 6px 14px 7px;
-      font-size: .58rem;
+      padding: 10px 20px 11px; /* aumentado */
+      font-size: .8rem; /* aumentado */
       letter-spacing: .16rem;
       font-weight: 700;
       text-transform: uppercase;
@@ -119,15 +120,15 @@
     }
 
     .icon {
-      width: 48px;
-      height: 48px;
+      width: 60px;
+      height: 60px;
       border-radius: 14px;
       background: #e2f5ef;
       color: var(--c-accent);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.35rem;
+      font-size: 2rem; /* aumentado */
     }
 
     .card.hero .icon {
@@ -137,7 +138,7 @@
 
     .card p {
       margin: 0;
-      font-size: 1rem;
+      font-size: 1.25rem; /* aumentado */
       font-weight: 500;
       line-height: 1.6;
     }
@@ -148,31 +149,31 @@
       padding: 0;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 14px; /* aumentado */
     }
 
     .list li {
       background: var(--c-alt);
       border: 1px solid #d8e2ea;
-      padding: 10px 14px;
+      padding: 16px 22px; /* aumentado */
       border-radius: 12px;
-      font-size: .88rem;
+      font-size: 1.15rem; /* aumentado */
       font-weight: 500;
       line-height: 1.5;
     }
 
     .card.timeline {
-      padding: 30px 24px 34px;
+      padding: 40px 32px 44px; /* aumentado */
     }
 
     .card.timeline h2 {
-      font-size: 1.6rem;
+      font-size: 2rem; /* aumentado */
       letter-spacing: .5px;
     }
 
     .steps {
       display: grid;
-      gap: 16px;
+      gap: 24px; /* aumentado */
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
@@ -186,26 +187,26 @@
       background: var(--c-alt);
       border: 1px solid #d8e2ea;
       border-radius: 14px;
-      padding: 18px 18px 20px;
+      padding: 26px 22px 28px; /* aumentado */
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 12px; /* aumentado */
     }
 
     .num {
       background: var(--c-accent);
       color: #fff;
-      font-size: .78rem;
+      font-size: 1rem; /* aumentado */
       letter-spacing: .08rem;
       font-weight: 700;
-      padding: 8px 14px;
+      padding: 12px 20px; /* aumentado */
       border-radius: 40px;
       width: max-content;
     }
 
     .step h4 {
       margin: 0;
-      font-size: 1.02rem;
+      font-size: 1.3rem; /* aumentado */
       font-weight: 700;
       color: var(--c-primary);
       letter-spacing: .4px;
@@ -213,7 +214,7 @@
 
     .step p {
       margin: 0;
-      font-size: .85rem;
+      font-size: 1.1rem; /* aumentado */
       color: var(--c-muted);
       line-height: 1.4;
     }
@@ -223,7 +224,7 @@
       color: #fff;
       position: relative;
       overflow: hidden;
-      padding: 38px 30px 44px;
+      padding: 48px 38px 54px; /* aumentado */
     }
 
     .card.cta-card:before {
@@ -235,7 +236,7 @@
     }
 
     .card.cta-card h2 {
-      font-size: clamp(2.05rem, 3.3vw, 2.5rem);
+      font-size: clamp(2.5rem, 4vw, 3rem); /* aumentado */
       font-weight: 800;
       margin: 0 0 12px;
       color: #fff;
@@ -243,7 +244,7 @@
 
     .card.cta-card p {
       color: #e2edf5;
-      font-size: 1rem;
+      font-size: 1.25rem; /* aumentado */
       max-width: 640px;
       margin: 0 0 26px;
       line-height: 1.5;
@@ -253,8 +254,8 @@
       background: var(--c-accent);
       color: #fff;
       text-decoration: none;
-      padding: 14px 30px;
-      font-size: .78rem;
+      padding: 18px 38px; /* aumentado */
+      font-size: 1rem; /* aumentado */
       font-weight: 700;
       letter-spacing: .12rem;
       text-transform: uppercase;
@@ -277,9 +278,9 @@
     }
 
     .list.big-items li {
-      font-size: 1.05rem;
+      font-size: 1.25rem; /* aumentado */
       line-height: 1.55;
-      padding: 14px 18px;
+      padding: 18px 26px; /* aumentado */
       font-weight: 600;
     }
 

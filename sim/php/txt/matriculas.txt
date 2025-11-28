@@ -86,3 +86,43 @@ Usuário: yara.maria
 Senha: 1312f36f
 Matrícula: 20250002
 -----------------------------
+Nome: elis castro
+Data de Nascimento: 2025-10-08
+Sexo: feminino
+Email: elisc@gmail.com
+Contato: (31) 98765-5632
+Endereço: adadasdasdads
+Responsável: Clara
+CPF: 37271193065
+RG: 50.431.362-9
+Escola de Origem: E.E. Antônio Silva
+Ano: 3
+Turno: integral
+Curso: eja
+Necessidades: sim, sou da apae
+Autorização de Imagem: Sim
+=== ACESSO GERADO ===
+Usuário: elis.castro
+Senha: c0c6718f
+Matrícula: 20250003
+-----------------------------
+Nome: leozindapicamole
+Data de Nascimento: 2025-11-06
+Sexo: masculino
+Email: leonardohgd97@gmail.com
+Contato: (31) 98680-1623
+Endereço: fewfewqfewouhfeqwoifhWEQF
+Responsável: Eloisa Saraiva
+CPF: 17636330636
+RG: 7687568546
+Escola de Origem: E.E. Tancredo de Almeida Neves
+Ano: 1
+Turno: integral
+Curso: desenvolvimento
+Necessidades: a
+Autorização de Imagem: Sim
+=== ACESSO GERADO ===
+Usuário: leozindapicamole.leozindapicamole
+Senha: 8ca211f9
+Matrícula: 20250004
+-----------------------------

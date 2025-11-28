@@ -1,8 +1,8 @@
 <?php
 $host = 'localhost';
 $dbname = 'escola_eetan';
-$user = 'root'; // Replace with your database username
-$password = ''; // Replace with your database password
+$user = 'root';
+$password = ''; 
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";

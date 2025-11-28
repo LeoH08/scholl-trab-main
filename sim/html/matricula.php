@@ -1,3 +1,11 @@
+<?php
+require_once __DIR__ . '/../../config/security.php';
+// Opcional: require_once __DIR__ . '/../../config/database.php'; // se esta página vier a consultar o banco
+$tipoUsuario = $_SESSION['tipo_usuario'] ?? null;
+if ($tipoUsuario !== null) {
+  $tipoUsuario = preg_replace('/[^a-z_]/i', '', (string)$tipoUsuario);
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -5,73 +13,237 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../css/stylelayout.css" />
-  <link rel="stylesheet" href="../css/stylematricula.css" />
+
+  <!-- SEO básico / padrão -->
+  <meta name="description" content="Formulário de matrícula da EETAN - Escola Estadual Tancredo de Almeida Neves." />
+  <meta name="keywords" content="EETAN, matrícula, escola, ensino médio, cursos técnicos" />
+
+  <!-- Ícone da aba -->
   <link
     rel="shortcut icon"
     href="../fts/Logo_EETAN.png"
     type="image/x-icon" />
+
+  <!-- Bootstrap Icons (padrão global) -->
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+  <!-- Google Fonts (padrão global) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- CSS global do layout e CSS específico da matrícula -->
+  <link rel="stylesheet" href="../css/stylelayout.css" />
+  <link rel="stylesheet" href="../css/stylematricula.css" />
+
   <title>Formulário de Matrícula - EETAN</title>
+
   <!-- ESTILOS ADICIONAIS (override) -->
   <style>
+    /* Container geral da página de matrícula */
+    main {
+      min-height: calc(100vh - 160px);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 130px 16px 40px;
+      font-size: 1rem;
+    }
+
+    .matricula-wrapper {
+      width: 100%;
+      max-width: 880px;
+      background: #ffffff;
+      border-radius: 22px;
+      box-shadow: 0 18px 40px rgba(15, 34, 70, .18);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      /* volta a ter 2 colunas: formulário + azul */
+      position: relative;
+      isolation: isolate;
+    }
+
+    @media (max-width: 900px) {
+      .matricula-wrapper {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .matricula-form-side {
+      padding: 32px 34px 28px;
+      background: #ffffff;
+      font-size: 1rem;
+    }
+
+    /* RESTAURA a box azul da direita */
+    .matricula-hero-side {
+      position: relative;
+      padding: 32px 28px;
+      background: linear-gradient(135deg, #193c73, #2259a8);
+      color: #f6f9ff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .matricula-hero-side {
+        display: none;
+      }
+    }
+
+    .matricula-hero-side::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(255, 255, 255, .24), transparent 60%),
+        radial-gradient(circle at 85% 80%, rgba(22, 155, 107, .35), transparent 65%);
+      opacity: .85;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .matricula-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(6, 44, 110, 0.85);
+      font-size: .75rem;
+      letter-spacing: .14rem;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .matricula-hero-badge i {
+      font-size: 1rem;
+    }
+
+    .matricula-hero-title {
+      font-size: 1.9rem;
+      line-height: 1.25;
+      font-weight: 800;
+      margin: 10px 0 6px;
+    }
+
+    .matricula-hero-text {
+      font-size: .98rem;
+      line-height: 1.6;
+      opacity: .9;
+      margin: 0 0 10px;
+    }
+
+    .matricula-hero-footer {
+      font-size: .8rem;
+      opacity: .8;
+    }
+
+    /* Título form */
+    .matricula-form-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .matricula-form-header h1 {
+      margin: 0;
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: #12284a;
+    }
+
+    .matricula-form-header p {
+      margin: 4px 0 0;
+      font-size: 1rem;
+      color: #62708a;
+    }
+
+    /* Barra de progresso */
     .matricula-progress {
       display: flex;
       gap: 12px;
-      margin: 32px 0 28px 0;
+      margin: 24px 0 22px;
       counter-reset: step;
     }
 
     .matricula-progress-step {
       flex: 1;
       position: relative;
-      text-align: center;
       font-size: .85rem;
-      color: #5a6b85;
+      color: #6b7a94;
       font-weight: 600;
       letter-spacing: .05rem;
+      padding: 6px 0;
+      /* usa flex para alinhar círculo + texto corretamente */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .matricula-progress-step:before {
+    .matricula-progress-step-label {
+      margin-top: 4px;
+      padding-left: 0;
+      /* não precisa mais “puxar” à esquerda */
+    }
+
+    .matricula-progress-step::before {
       counter-increment: step;
       content: counter(step);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 38px;
-      height: 38px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
-      background: #dbe6f5;
-      color: #213967;
+      background: #e0e6f4;
+      color: #1d3260;
       font-weight: 700;
-      margin-bottom: 6px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, .08);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, .09);
+      line-height: 34px;
     }
 
-    .matricula-progress-step.active:before,
-    .matricula-progress-step.done:before {
+    .matricula-progress-step.active::before,
+    .matricula-progress-step.done::before {
       background: #2f65b8;
       color: #fff;
     }
 
     .matricula-progress-step.done {
-      opacity: .75;
+      opacity: .7;
     }
 
     .matricula-progress-step.active {
       color: #2f65b8;
     }
 
+    @media (max-width: 600px) {
+      .matricula-progress-step {
+        font-size: .78rem;
+      }
+
+      .matricula-progress-step::before {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+      }
+    }
+
+    /* Fieldsets (steps) */
     .matricula-fieldset {
       display: none;
-      animation: fade .35s ease;
+      animation: fade .3s ease;
       border: 0;
-      padding: 0;
+      padding: 4px 0 0;
       margin: 0;
     }
 
@@ -91,48 +263,78 @@
       }
     }
 
+    /* Inputs */
     form.matricula-form .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     form.matricula-form label {
       display: block;
       font-weight: 600;
-      color: #0a2351;
+      color: #20355e;
       margin-bottom: 6px;
+      font-size: 1rem;
     }
 
     form.matricula-form input,
     form.matricula-form select {
       width: 100%;
-      padding: 14px 14px;
-      border: 1px solid #b9c8dd;
-      border-radius: 10px;
-      font-size: 1.05rem;
-      line-height: 1.3;
-      background: #fff;
-      transition: border-color .25s, box-shadow .25s, background .25s;
+      padding: 13px 14px;
+      border: 1px solid #c3cde0;
+      border-radius: 12px;
+      font-size: 1.02rem;
+      line-height: 1.4;
+      background: #f8f9fc;
+      transition: border-color .25s, box-shadow .25s, background .25s, transform .08s;
     }
 
     form.matricula-form input:focus,
     form.matricula-form select:focus {
       outline: none;
       border-color: #2f65b8;
-      box-shadow: 0 0 0 3px rgba(47, 101, 184, .25);
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(47, 101, 184, .22);
+      transform: translateY(-1px);
     }
 
     .hint {
-      font-size: .7rem;
-      letter-spacing: .05rem;
-      color: #45566f;
+      font-size: .8rem;
+      letter-spacing: .03rem;
+      color: #64748b;
       margin-top: 4px;
     }
 
+    .cep-inline {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 10px;
+    }
+
+    @media (max-width: 650px) {
+      .cep-inline {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .autocomplete-status {
+      font-size: .75rem;
+      color: #2f65b8;
+      margin-top: 4px;
+      display: none;
+    }
+
+    .matricula-form input.invalid,
+    .matricula-form select.invalid {
+      border-color: #c0392b;
+      background: #fff3f3;
+    }
+
+    /* Navegação de passos & botão final */
     .step-nav {
       display: flex;
       justify-content: space-between;
-      gap: 16px;
-      margin-top: 10px;
+      gap: 12px;
+      margin-top: 20px;
     }
 
     .step-nav button,
@@ -143,34 +345,37 @@
       color: #fff;
       font-weight: 600;
       border: 0;
-      padding: 14px 18px;
-      border-radius: 10px;
+      padding: 13px 18px;
+      border-radius: 999px;
       font-size: 1rem;
       letter-spacing: .05rem;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
-      transition: background .25s, transform .25s;
+      transition: background .22s, transform .15s, box-shadow .15s;
+      box-shadow: 0 10px 20px rgba(28, 71, 145, .32);
     }
 
     .step-nav button[disabled] {
       opacity: .4;
       cursor: not-allowed;
+      box-shadow: none;
     }
 
     .step-nav button.alt {
-      background: #7b8798;
+      background: #8d96a7;
+      box-shadow: 0 8px 18px rgba(84, 93, 110, .35);
     }
 
     .step-nav button:hover:not([disabled]),
     .final-actions button:hover {
-      background: #213967;
-      transform: translateY(-2px);
+      background: #23467f;
+      transform: translateY(-1px);
     }
 
     .final-actions {
-      margin-top: 24px;
+      margin-top: 20px;
       text-align: center;
     }
 
@@ -178,44 +383,27 @@
       width: 100%;
     }
 
-    .cep-inline {
-      display: grid;
-      grid-template-columns: 1fr 130px;
-      gap: 12px;
+    .final-actions button i {
+      font-size: 1.2rem;
     }
 
-    @media (max-width:650px) {
-      .cep-inline {
-        grid-template-columns: 1fr;
-      }
-
-      .matricula-progress-step {
-        font-size: .7rem;
-      }
-
-      .matricula-progress-step:before {
-        width: 34px;
-        height: 34px;
-      }
+    /* Checkbox autorização */
+    .matricula-consent {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      font-size: .95rem;
+      color: #414b5f;
     }
 
-    .autocomplete-status {
-      font-size: .65rem;
-      color: #2f65b8;
+    .matricula-consent input[type="checkbox"] {
       margin-top: 4px;
-      display: none;
-    }
-
-    .matricula-form input.invalid {
-      border-color: #c0392b;
-      background: #ffecec;
     }
   </style>
 </head>
 
 <body>
-  <?php if (session_status() === PHP_SESSION_NONE) session_start();
-  $tipoUsuario = $_SESSION['tipo_usuario'] ?? null; ?>
+  <?php /* Removido session_start redundante */ ?>
   <header class="content">
     <div class="logo">
       <a href="../html/index.php">
@@ -235,164 +423,232 @@
         <?php if (isset($tipoUsuario) && in_array($tipoUsuario, ['professor', 'aluno'], true)): ?>
           <li><a href="../html/boletim.php">Boletim</a></li>
         <?php endif; ?>
-        <li><a href="../html/cadastro.php"><i class="bi bi-person-circle"></i></a></li>
-        <?php if ($tipoUsuario): ?>
-          <li><a href="../php/controller/logout.php" style="color:#e74c3c;"><i class="bi bi-box-arrow-right"></i> Sair</a></li>
+        <li>
+          <a href="../html/cadastro.php">
+            <i class="bi bi-person-circle"></i>
+          </a>
+        </li>
+        <?php if (isset($tipoUsuario)): ?>
+          <li>
+            <a href="../php/controller/logout.php" style="color: #e74c3c;">
+              <i class="bi bi-box-arrow-right"></i> Sair
+            </a>
+          </li>
         <?php endif; ?>
       </ul>
     </nav>
   </header>
   <main>
-    <form
-      class="matricula-form"
-      action="../php/controller/matricula.php"
-      method="post"
-      enctype="multipart/form-data"
-      novalidate
-      id="matriculaForm">
-      <h1>Formulário de Matrícula</h1>
-
-      <div class="matricula-progress" aria-label="Progresso do formulário">
-        <div class="matricula-progress-step active" data-step-indicator="1" aria-current="step">Dados</div>
-        <div class="matricula-progress-step" data-step-indicator="2">Contato</div>
-        <div class="matricula-progress-step" data-step-indicator="3">Escolar</div>
-      </div>
-
-      <!-- Etapa 1 -->
-      <fieldset class="matricula-fieldset active" data-step="1">
-        <div class="form-group">
-          <label for="nome">Nome Completo</label>
-          <input type="text" id="nome" name="nome" placeholder="Ex: João da Silva" required />
-          <p class="hint">Informe o nome civil completo conforme documento.</p>
-        </div>
-        <div class="form-group">
-          <label for="data_nascimento">Data de Nascimento</label>
-          <input type="date" id="data_nascimento" name="data_nascimento" required />
-        </div>
-        <div class="form-group">
-          <label for="sexo">Sexo</label>
-          <select id="sexo" name="sexo" required>
-            <option value="" disabled selected>Selecione</option>
-            <option value="feminino">Feminino</option>
-            <option value="masculino">Masculino</option>
-            <option value="outro">Outro / Prefiro não informar</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="cpf">CPF</label>
-          <input type="text" id="cpf" name="cpf" placeholder="Ex: 123.456.789-10" maxlength="14" required />
-          <p class="hint">Digite somente números ou use o formato 000.000.000-00.</p>
-        </div>
-        <div class="form-group">
-          <label for="rg">RG (Identidade)</label>
-          <input type="text" id="rg" name="rg" placeholder="Ex: MG-12.345.678" required />
-        </div>
-        <div class="step-nav">
-          <button type="button" id="next1">Próximo &raquo;</button>
-        </div>
-      </fieldset>
-
-      <!-- Etapa 2 -->
-      <fieldset class="matricula-fieldset" data-step="2">
-        <div class="form-group">
-          <label for="email">E-mail</label>
-          <input type="email" id="email" name="email" placeholder="Ex: aluno@email.com" required />
-        </div>
-        <div class="form-group">
-          <label for="contato">Número de Contato (WhatsApp)</label>
-          <input type="tel" id="contato" name="contato" placeholder="(31) 99999-0000" required />
-        </div>
-        <div class="form-group cep-inline">
+    <div class="matricula-wrapper">
+      <section class="matricula-form-side">
+        <div class="matricula-form-header">
           <div>
-            <label for="cep">CEP</label>
-            <input type="text" id="cep" name="cep" placeholder="Ex: 35170-000" pattern="\\d{5}-?\\d{3}" />
-            <p class="hint">Digite CEP e saia do campo para auto-preencher endereço.</p>
-          </div>
-          <div>
-            <label for="responsavel">Responsável</label>
-            <input type="text" id="responsavel" name="responsavel" placeholder="Ex: Maria de Souza" required />
+            <h1>Formulário de Matrícula</h1>
+            <p>Preencha os dados em três etapas rápidas para concluir sua matrícula.</p>
           </div>
         </div>
-        <div class="form-group">
-          <label for="endereco">Endereço Completo</label>
-          <input
-            type="text"
-            id="endereco"
-            name="endereco"
-            placeholder="Logradouro, número, bairro, cidade - UF"
-            required />
-          <p class="hint">Ex: Rua das Acácias, 120, Centro, Coronel Fabriciano - MG</p>
-        </div>
-        <div class="step-nav">
-          <button type="button" class="alt" data-prev="1">&laquo; Voltar</button>
-          <button type="button" data-next="3">Próximo &raquo;</button>
-        </div>
-      </fieldset>
 
-      <!-- Etapa 3 -->
-      <fieldset class="matricula-fieldset" data-step="3">
-        <div class="form-group">
-          <label for="escola_origem">Escola de Origem</label>
-          <input
-            type="text"
-            id="escola_origem"
-            name="escola_origem"
-            list="lista-escolas"
-            placeholder="Digite para sugerir..."
-            required
-            autocomplete="off" />
-          <datalist id="lista-escolas"><!-- preenchido via JS --></datalist>
-          <p class="autocomplete-status" id="escolaStatus">Sugestões carregadas</p>
+        <div class="matricula-progress" aria-label="Progresso do formulário">
+          <div class="matricula-progress-step active" data-step-indicator="1" aria-current="step">
+            <span class="matricula-progress-step-label">Dados</span>
+          </div>
+          <div class="matricula-progress-step" data-step-indicator="2">
+            <span class="matricula-progress-step-label">Contato</span>
+          </div>
+          <div class="matricula-progress-step" data-step-indicator="3">
+            <span class="matricula-progress-step-label">Escolar</span>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="ano">Ano/Série</label>
-          <select id="ano" name="ano" required>
-            <option value="" disabled selected>Selecione</option>
-            <option value="1">1º Ano</option>
-            <option value="2">2º Ano</option>
-            <option value="3">3º Ano</option>
-          </select>
+
+        <form
+          class="matricula-form"
+          action="../php/controller/infologin.php"
+          method="post"
+          enctype="multipart/form-data"
+          novalidate
+          id="matriculaForm">
+          <?php
+          // IMPORTANTE:
+          // No arquivo ../php/matricula.php, depois de criar o usuário/salvar matrícula,
+          // faça algo como:
+          //
+          //   header('Location: ../html/credenciais.php');
+          //   exit;
+          //
+          // para redirecionar para a página que mostra as credenciais.
+          ?>
+          <!-- Token CSRF -->
+          <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(csrf_token(), ENT_QUOTES, 'UTF-8'); ?>">
+          <!-- Honeypot anti-spam -->
+          <div style="display:none;">
+            <label>Deixe em branco</label>
+            <input type="text" name="_hp" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <!-- Etapa 1 -->
+          <fieldset class="matricula-fieldset active" data-step="1">
+            <div class="form-group">
+              <label for="nome">Nome Completo</label>
+              <input type="text" id="nome" name="nome" placeholder="Ex: João da Silva" required />
+              <p class="hint">Informe o nome civil completo conforme documento.</p>
+            </div>
+            <div class="form-group">
+              <label for="data_nascimento">Data de Nascimento</label>
+              <input type="date" id="data_nascimento" name="data_nascimento" required />
+            </div>
+            <div class="form-group">
+              <label for="sexo">Sexo</label>
+              <select id="sexo" name="sexo" required>
+                <option value="" disabled selected>Selecione</option>
+                <option value="feminino">Feminino</option>
+                <option value="masculino">Masculino</option>
+                <option value="outro">Outro / Prefiro não informar</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="cpf">CPF</label>
+              <input
+                type="text"
+                id="cpf"
+                name="cpf"
+                placeholder="Ex: 123.456.789-10"
+                maxlength="14"
+                required
+                pattern="^\d{3}\.\d{3}\.\d{3}-\d{2}$" />
+              <p class="hint">Digite somente números ou use o formato 000.000.000-00.</p>
+            </div>
+            <div class="form-group">
+              <label for="rg">RG (Identidade)</label>
+              <input type="text" id="rg" name="rg" placeholder="Ex: MG-12.345.678" required />
+            </div>
+            <div class="step-nav">
+              <button type="button" id="next1">Próximo &raquo;</button>
+            </div>
+          </fieldset>
+
+          <!-- Etapa 2 -->
+          <fieldset class="matricula-fieldset" data-step="2">
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="Ex: aluno@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="contato">Número de Contato (WhatsApp)</label>
+              <input type="tel" id="contato" name="contato" placeholder="(31) 99999-0000" required />
+            </div>
+            <div class="form-group cep-inline">
+              <div>
+                <label for="cep">CEP</label>
+                <input type="text" id="cep" name="cep" placeholder="Ex: 35170-000" pattern="\d{5}-?\d{3}" />
+                <p class="hint">Digite o CEP e saia do campo para auto-preencher o endereço.</p>
+              </div>
+              <div>
+                <label for="responsavel">Responsável</label>
+                <input type="text" id="responsavel" name="responsavel" placeholder="Ex: Maria de Souza" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="endereco">Endereço Completo</label>
+              <input
+                type="text"
+                id="endereco"
+                name="endereco"
+                placeholder="Logradouro, número, bairro, cidade - UF"
+                required />
+              <p class="hint">Ex: Rua das Acácias, 120, Centro, Coronel Fabriciano - MG</p>
+            </div>
+            <div class="step-nav">
+              <button type="button" class="alt" data-prev="1">&laquo; Voltar</button>
+              <button type="button" data-next="3">Próximo &raquo;</button>
+            </div>
+          </fieldset>
+
+          <!-- Etapa 3 -->
+          <fieldset class="matricula-fieldset" data-step="3">
+            <div class="form-group">
+              <label for="escola_origem">Escola de Origem</label>
+              <input
+                type="text"
+                id="escola_origem"
+                name="escola_origem"
+                list="lista-escolas"
+                placeholder="Digite para sugerir..."
+                required
+                autocomplete="off" />
+              <datalist id="lista-escolas"><!-- preenchido via JS --></datalist>
+              <p class="autocomplete-status" id="escolaStatus">Sugestões carregadas</p>
+            </div>
+            <div class="form-group">
+              <label for="ano">Ano/Série</label>
+              <select id="ano" name="ano" required>
+                <option value="" disabled selected>Selecione</option>
+                <option value="1">1º Ano</option>
+                <option value="2">2º Ano</option>
+                <option value="3">3º Ano</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="turno">Turno</label>
+              <select id="turno" name="turno" required>
+                <option value="" disabled selected>Selecione</option>
+                <option value="integral">Integral</option>
+                <option value="noturno">Noturno</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="curso">Curso Desejado</label>
+              <select id="curso" name="curso" required>
+                <option value="" disabled selected>Selecione um curso</option>
+                <option value="desenvolvimento">Desenvolvimento de Sistemas</option>
+                <option value="logistica">Logística</option>
+                <option value="eja">EJA</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="necessidades">Necessidades Especiais (se houver)</label>
+              <input type="text" id="necessidades" name="necessidades" placeholder="Ex: Baixa visão" />
+            </div>
+            <div class="form-group">
+              <label for="documentos">Anexar Documentos</label>
+              <input type="file" id="documentos" name="documentos[]" multiple />
+              <p class="hint">RG, CPF, comprovante de residência, histórico escolar (PDF/JPG).</p>
+            </div>
+            <div class="form-group" style="margin-top:4px;">
+              <label class="matricula-consent">
+                <input type="checkbox" name="autorizacao_imagem" required />
+                <span>Autorizo o uso de imagem do aluno para fins institucionais da escola, conforme a Política de Privacidade.</span>
+              </label>
+            </div>
+            <div class="step-nav">
+              <button type="button" class="alt" data-prev="2">&laquo; Voltar</button>
+            </div>
+            <div class="final-actions">
+              <button type="submit"><i class="bi bi-send"></i> Enviar Matrícula</button>
+            </div>
+          </fieldset>
+        </form>
+      </section>
+
+      <!-- volta a exibir o aside azul (já estilizado acima) -->
+      <aside class="matricula-hero-side">
+        <div>
+          <span class="matricula-hero-badge">
+            <i class="bi bi-mortarboard-fill"></i>
+            ETAN • Técnica Integrada
+          </span>
+          <h2 class="matricula-hero-title">Comece hoje a construir o seu futuro.</h2>
+          <p class="matricula-hero-text">
+            A matrícula é feita em poucos passos. Tenha em mãos seus documentos pessoais, dados de contato e
+            informações escolares para agilizar o processo.
+          </p>
         </div>
-        <div class="form-group">
-          <label for="turno">Turno</label>
-          <select id="turno" name="turno" required>
-            <option value="" disabled selected>Selecione</option>
-            <option value="integral">Integral</option>
-            <option value="noturno">Noturno</option>
-          </select>
+        <div class="matricula-hero-footer">
+          <p>
+            Precisa de ajuda? Fale com a secretaria pelo WhatsApp disponível no rodapé do site ou presencialmente na escola.
+          </p>
         </div>
-        <div class="form-group">
-          <label for="curso">Curso Desejado</label>
-          <select id="curso" name="curso" required>
-            <option value="" disabled selected>Selecione um curso</option>
-            <option value="desenvolvimento">Desenvolvimento de Sistemas</option>
-            <option value="logistica">Logística</option>
-            <option value="eja">EJA</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="necessidades">Necessidades Especiais (se houver)</label>
-          <input type="text" id="necessidades" name="necessidades" placeholder="Ex: Baixa visão" />
-        </div>
-        <div class="form-group">
-          <label for="documentos">Anexar Documentos</label>
-          <input type="file" id="documentos" name="documentos[]" multiple />
-          <p class="hint">RG, CPF, comprovante de residência, histórico escolar (PDF/JPG).</p>
-        </div>
-        <div class="form-group" style="margin-top:4px;">
-          <label style="display:flex; gap:8px; align-items:center; font-weight:500;">
-            <input type="checkbox" name="autorizacao_imagem" required />
-            Autorizo o uso de imagem do aluno para fins institucionais.
-          </label>
-        </div>
-        <div class="step-nav">
-          <button type="button" class="alt" data-prev="2">&laquo; Voltar</button>
-        </div>
-        <div class="final-actions">
-          <button type="submit"><i class="bi bi-send"></i> Enviar Matrícula</button>
-        </div>
-      </fieldset>
-    </form>
+      </aside>
+    </div>
   </main>
   <footer class="footer-content">
     <div class="footer-social">
@@ -427,7 +683,7 @@
       </p>
     </div>
   </footer>
-  <script>
+  <script nonce="<?php echo htmlspecialchars(csp_nonce(), ENT_QUOTES, 'UTF-8'); ?>">
     (function() {
       const form = document.getElementById('matriculaForm');
       const steps = Array.from(document.querySelectorAll('.matricula-fieldset'));
@@ -480,10 +736,13 @@
       });
 
       form.addEventListener('submit', e => {
+        // se o passo atual não estiver válido, não envia
         if (!validateStep(current)) {
           e.preventDefault();
           return;
         }
+        // aqui não chamamos e.preventDefault(), então o submit segue normalmente
+        // você pode inspecionar no devtools (Network) se a requisição está indo para ../php/matricula.php
       });
 
       // CEP auto-preenchimento (ViaCEP)

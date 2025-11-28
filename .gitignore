@@ -1,0 +1,9 @@
+# ...existing code...
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+/vendor/
+/node_modules/
+php_errors.log

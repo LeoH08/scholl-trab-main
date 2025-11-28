@@ -2,6 +2,11 @@
 if (session_status() === PHP_SESSION_NONE) session_start();
 session_unset();
 session_destroy();
+session_start();
+
+$tipoUsuario = $_SESSION['tipo_usuario'] ?? null;
+$erroCadastro    = isset($_GET['errorCadastro'])   ? trim($_GET['errorCadastro'])   : '';
+$sucessoCadastro = isset($_GET['successCadastro']) ? (bool)$_GET['successCadastro'] : false;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -23,22 +28,17 @@ session_destroy();
     rel="shortcut icon"
     href="../fts/Logo_EETAN.png"
     type="image/x-icon" />
-  <title>EETAN | Login</title>
+  <title>EETAN | Criar conta</title>
   <script>
     function toggleUserType() {
       const userType = document.getElementById("tipo_usuario").value;
-      const adminNotice = document.getElementById("adminNotice");
       const maspField = document.getElementById("maspField");
-
-      adminNotice.style.display = userType === "professor" ? "block" : "none";
       maspField.style.display = userType === "professor" ? "block" : "none";
     }
   </script>
 </head>
 
 <body>
-  <?php if (session_status() === PHP_SESSION_NONE) session_start();
-  $tipoUsuario = $_SESSION['tipo_usuario'] ?? null; ?>
   <header class="content">
     <div class="logo">
       <a href="../html/index.php">
@@ -67,7 +67,24 @@ session_destroy();
   </header>
   <main>
     <form action="../php/cadastro.php" method="post">
-      <h1>Login</h1>
+      <h1>Criar conta</h1>
+      <p style="margin-top:4px;margin-bottom:10px;font-size:.95rem;color:#4b5563;">
+        Cadastre-se como <strong>Aluno</strong> ou <strong>Professor</strong> para acessar o sistema.
+      </p>
+
+      <?php if ($erroCadastro): ?>
+        <div style="background:#fef2f2;border:1px solid #fecaca;color:#b91c1c;padding:8px 10px;border-radius:8px;margin-bottom:10px;font-size:.9rem;">
+          <i class="bi bi-exclamation-triangle-fill"></i>
+          <?php echo htmlspecialchars($erroCadastro, ENT_QUOTES, 'UTF-8'); ?>
+        </div>
+      <?php endif; ?>
+
+      <?php if ($sucessoCadastro): ?>
+        <div style="background:#ecfdf3;border:1px solid #bbf7d0;color:#15803d;padding:8px 10px;border-radius:8px;margin-bottom:10px;font-size:.9rem;">
+          <i class="bi bi-check-circle-fill"></i>
+          Conta criada com sucesso. Você já pode fazer login.
+        </div>
+      <?php endif; ?>
 
       <label for="tipo_usuario">Você é:</label>
       <select
@@ -80,18 +97,28 @@ session_destroy();
         <option value="professor">Professor</option>
       </select>
 
-      <div
-        id="adminNotice"
-        style="display: none; color: red; margin-top: 10px">
-        <strong>Nota:</strong> Professores têm acesso administrativo.
-      </div>
+      <label for="nome">Nome completo:</label>
+      <input
+        type="text"
+        id="nome"
+        name="nome"
+        placeholder="Digite seu nome completo"
+        required />
+
+      <label for="email">E-mail:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Seu e-mail para contato/login"
+        required />
 
       <label for="usuario">Usuário:</label>
       <input
         type="text"
         id="usuario"
         name="usuario"
-        placeholder="Digite seu nome de usuário"
+        placeholder="CPF (apenas números) ou usuário desejado"
         required />
 
       <label for="senha">Senha:</label>
@@ -99,12 +126,19 @@ session_destroy();
         type="password"
         id="senha"
         name="senha"
-        placeholder="Digite sua senha"
+        placeholder="Crie uma senha"
         required />
 
-      <!-- Campo MASP para professores -->
+      <label for="senha_confirmacao">Confirmar senha:</label>
+      <input
+        type="password"
+        id="senha_confirmacao"
+        name="senha_confirmacao"
+        placeholder="Repita a senha"
+        required />
+
       <div id="maspField" style="display: none">
-        <label for="masp">MASP:</label>
+        <label for="masp">MASP (somente professores):</label>
         <input
           type="text"
           id="masp"
@@ -112,16 +146,13 @@ session_destroy();
           placeholder="Digite seu MASP" />
       </div>
 
-      <button type="submit">Entrar</button>
+      <button type="submit">Criar conta</button>
     </form>
 
-    <p>Não tem uma conta?</p>
+    <p>Já tem uma conta?</p>
     <ul>
       <li>
-        <a href="../html/cadastro.php">Criar conta como Aluno</a>
-      </li>
-      <li>
-        <a href="../html/cadastro.php">Criar conta como Professor</a>
+        <a href="../html/cadastro.php">Entrar (login)</a>
       </li>
     </ul>
   </main>

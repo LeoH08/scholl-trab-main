@@ -85,13 +85,13 @@
         <div class="perfil-conteudo">
           <h2 id="dir-cristiane-nome">Cristiane <span class="cargo">Diretora</span></h2>
           <ul class="topicos">
-            <li><strong>🎓 Formação Acadêmica:</strong> Pedagogia e especialização em Gestão Educacional.</li>
-            <li><strong>📌 Experiência Profissional:</strong> Atuação sólida na rede pública, liderança de projetos de melhoria de aprendizagem e integração tecnológica.</li>
+            <li><strong>🎓 Formação Acadêmica:</strong> Acadêmica: Licenciatura Plena em Ciências Biológicas pelo Unileste; Pós-graduação em Gestão Escolar pela FAE/UFMG; Pós-graduação em Inspeção Escolar pela FACUMINAS e Mestrado em Gestão e Avaliação da Educação Pública pela UFJF.</li>
+            <li><strong>📌 Experiência Profissional:</strong> Professora de Ciências de fevereiro de 2005 a setembro de 2011. A partir daí, assumiu a gestão da escola, estando em seu 4° mandato.</li>
             <li><strong>🌟 Atuação na Gestão:</strong> Foco em clima escolar acolhedor, transparência e fortalecimento de vínculos com a comunidade.</li>
-            <li><strong>💬 Valores e Visão:</strong> Educação como agente de transformação social, com equidade e protagonismo estudantil.</li>
+            <li><strong>💬 Valores e Visão:</strong> Proporcionar um ensino de qualidade, propiciando o crescimento e o desenvolvimento de conhecimentos inerentes à vida escolar e de princípios como o Protagonismo Juvenil, solidariedade e trabalho em equipe.</li>
           </ul>
           <blockquote class="citacao" aria-label="Citação da diretora">
-            “A escola deve ser um espaço vivo, onde cada estudante encontre propósito e oportunidade.”
+            “aproveite as oportunidades porque o tempo passa rápido. A motivação é pessoal e só você conhece os seus sonhos. O esforço de hoje será recompensado. Com foco e fé você é capaz de muito mais do que imagina.”
           </blockquote>
         </div>
       </article>
@@ -119,8 +119,7 @@
     <section id="mensagem" class="mensagem-direcao animate" data-aos="fade-up" aria-labelledby="titulo-mensagem">
       <h2 id="titulo-mensagem">Mensagem da Direção</h2>
       <p>
-        Construímos diariamente um ambiente que estimula descobertas, respeito e responsabilidade.
-        Convidamos estudantes, famílias e parceiros a compartilharem desse compromisso.
+      Aproveite as oportunidades porque o tempo passa rápido. A motivação é pessoal e só você conhece os seus sonhos. O esforço de hoje será recompensado. Com foco e fé você é capaz de muito mais do que imagina.
       </p>
     </section>
 

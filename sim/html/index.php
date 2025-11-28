@@ -73,18 +73,26 @@ $tipoUsuario = $_SESSION['tipo_usuario'] ?? null;
       <div class="slideshow-container">
         <img
           class="slides"
-          src="../fts/2.png"
+          src="../fts/capa1.png"
           alt="Volta as aulas" />
         <img
           class="slides"
-          src="../fts/3.png"
+          src="../fts/capa2.png"
           alt="Semana de provas" />
         <img
           class="slides"
-          src="../fts/5.png"
+          src="../fts/capa3.png"
+          alt="Novembro Azul" />
+        <img
+          class="slides"
+          src="../fts/capa4.png"
           alt="Novembro Azul" />
 
         <div class="progress-bar"></div>
+
+        <!-- botões de navegação -->
+        <button class="slide-btn prev" type="button" onclick="showPrevSlide()">&#10094;</button>
+        <button class="slide-btn next" type="button" onclick="showNextSlide(true)">&#10095;</button>
       </div>
     </div>
   </section>
@@ -152,33 +160,82 @@ $tipoUsuario = $_SESSION['tipo_usuario'] ?? null;
   </footer>
 
   <script>
+    const slideDuration = 8000; // 8s
     let slideIndex = 0;
-    const slideDuration = 10000; // 10 seconds
+    let slideTimer = null;
 
-    function showSlides() {
-      let slides = document.getElementsByClassName("slides");
+    function initSlides() {
+      const slides = document.getElementsByClassName("slides");
+      if (!slides.length) return;
+
       for (let i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
+        slides[i].classList.remove("active");
       }
-      slideIndex++;
-      if (slideIndex > slides.length) {
-        slideIndex = 1;
-      }
-      slides[slideIndex - 1].style.display = "block";
-      updateProgressBar();
-      setTimeout(showSlides, slideDuration);
+
+      slideIndex = 0;
+      slides[slideIndex].style.display = "block";
+      slides[slideIndex].classList.add("active");
+
+      resetProgressBar();
+      startSlideLoop();
     }
 
-    function updateProgressBar() {
+    function startSlideLoop() {
+      if (slideTimer) clearTimeout(slideTimer);
+      slideTimer = setTimeout(() => showNextSlide(false), slideDuration);
+    }
+
+    // próximo slide; isUser = true quando for clique do usuário
+    function showNextSlide(isUser = false) {
+      const slides = document.getElementsByClassName("slides");
+      if (!slides.length) return;
+
+      const newIndex = (slideIndex + 1) % slides.length;
+      goToSlide(newIndex, isUser);
+    }
+
+    function showPrevSlide() {
+      const slides = document.getElementsByClassName("slides");
+      if (!slides.length) return;
+
+      const newIndex = (slideIndex - 1 + slides.length) % slides.length;
+      goToSlide(newIndex, true);
+    }
+
+    function goToSlide(newIndex, isUser) {
+      const slides = document.getElementsByClassName("slides");
+      if (!slides.length || newIndex === slideIndex) return;
+
+      // esconde o atual
+      slides[slideIndex].style.display = "none";
+      slides[slideIndex].classList.remove("active");
+
+      // mostra o novo
+      slideIndex = newIndex;
+      slides[slideIndex].style.display = "block";
+      slides[slideIndex].classList.add("active");
+
+      resetProgressBar();
+      // sempre reinicia o timer após trocar de slide
+      startSlideLoop();
+    }
+
+    function resetProgressBar() {
       const progressBar = document.querySelector(".progress-bar");
+      if (!progressBar) return;
+
+      progressBar.style.transition = "none";
       progressBar.style.width = "0%";
-      setTimeout(() => {
-        progressBar.style.transition = `width ${slideDuration}ms linear`;
-        progressBar.style.width = "100%";
-      }, 10);
+      void progressBar.offsetWidth;
+      progressBar.style.transition = `width ${slideDuration}ms linear`;
+      progressBar.style.width = "100%";
     }
 
-    showSlides(); // Start the slideshow
+    window.addEventListener("load", initSlides);
+    window.addEventListener("beforeunload", () => {
+      if (slideTimer) clearTimeout(slideTimer);
+    });
   </script>
 </body>
 
